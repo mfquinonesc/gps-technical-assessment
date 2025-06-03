@@ -2,34 +2,48 @@
     <div class="hero-body is-flex is-flex-direction-column is-justify-content-top">
         <div class="container columns">
             <div class="column is-4">
-                <div class="box px-5 form-box">
+                <form [formGroup]="vehicleForm" class="box px-5 form-box">
 
-                    <a class="btn-add"> <img src="../../../assets/Icon_crear.svg" alt="Crear"> </a>
+                    <a class="btn-add" (click)="addNew()"> <img src="../../../assets/Icon_crear.svg" alt="Crear"> </a>
 
                     <div>
-                        <img src="../../../assets/Icon_vehiculo.svg" alt="Marca">
-                        <input type="text" name="" id="">
+                        <img *ngIf="isCreating" src="../../../assets/Icon_vehiculo1.svg" alt="Marca">
+                        <img *ngIf="!isCreating" src="../../../assets/Icon_vehiculo.svg" alt="Marca">
+                        <input type="text" formControlName="brand" placeholder="Marca">
                     </div>
+                    <!-- <small *ngIf="brand.invalid && brand.touched">
+                        Marca es obligatoria.
+                    </small> -->
+
                     <div>
-                        <img src="../../../assets/Icon_puntoubicacion.svg" alt="Sucursal">
-                        <input type="text" name="" id="">
+                        <img *ngIf="isCreating" src="../../../assets/Icon_puntoubicacion1.svg" alt="Sucursal">
+                        <img *ngIf="!isCreating" src="../../../assets/Icon_puntoubicacion.svg" alt="Sucursal">
+                        <input type="text" formControlName="company_brand" placeholder="Sucursal">
                     </div>
+                    <!-- <small *ngIf="company_brand.invalid && company_brand.touched">
+                        Sucursal es obligatoria.
+                    </small> -->
+
                     <div>
-                        <img src="../../../assets/Icon_persona.svg" alt="Aspirante">
-                        <input type="text" name="" id="">
+                        <img *ngIf="isCreating" src="../../../assets/Icon_persona1.svg" alt="Aspirante">
+                        <img *ngIf="!isCreating" src="../../../assets/Icon_persona.svg" alt="Aspirante">
+                        <input type="text" formControlName="applicant" placeholder="Aspirante">
+                    </div>
+                    <!-- <small *ngIf="applicant.invalid && applicant.touched">
+                        Aspirante es obligatorio.
+                    </small>     -->
+
+                    <div *ngIf="isCreating" class="buttons">
+                        <button class="btn-cancel" (click)="cancel()">Cancelar</button>
+                        <button class="btn-create" (click)="create()">Crear</button>
                     </div>
 
-                    <div class="buttons">
-                        <button class="btn-cancel">Cancelar</button>
-                        <button class="btn-create">Crear</button>
+                    <div *ngIf="isEditing" class="icons">
+                        <a><img src="../../../assets/Icon_cancelar.svg" alt="Cancelar" (click)="cancel()"></a>
+                        <a><img src="../../../assets/Icon_confirmar.svg" alt="Confirmar" (click)="update()"></a>
                     </div>
 
-                    <div class="icons">
-                        <a><img src="../../../assets/Icon_cancelar.svg" alt="Cancelar"></a>
-                        <a><img src="../../../assets/Icon_confirmar.svg" alt="Confirmar"></a>
-                    </div>
-
-                </div>
+                </form>
             </div>
             <div class="column is-8">
                 <table class="table-vehicle">
@@ -38,17 +52,23 @@
                             <th> Marca </th>
                             <th> Sucursal </th>
                             <th> Aspirante </th>
-                            <th></th>                          
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Mazda</td>
-                            <td>Chapinero</td>
-                            <td>Jhon Doe</td>
+                        <tr *ngFor="let v of vehicles">
+                            <td>{{ v.brand }}</td>
+                            <td>{{ v.company_brand }}</td>
+                            <td>{{ v.applicant }}</td>
                             <td>
-                                <a><img src="../../../assets/Icon_editar.svg" alt="Editar" ></a>                           
-                                <a><img src="../../../assets/Icon_eliminar.svg" alt="Eliminar"></a>
+                                <a>
+                                    <img *ngIf="!isEditing || (selectedVehicle && selectedVehicle.id == v.id)" src="../../../assets/Icon_editar1.svg" alt="Editar" (click)="edit(v.id)">
+                                    <img *ngIf="isEditing && !(selectedVehicle && selectedVehicle.id == v.id)" src="../../../assets/Icon_editar.svg" alt="Editar" > <!---inactivo-->                                  
+                                </a>
+                                <a>
+                                    <img *ngIf="!isEditing || (selectedVehicle && selectedVehicle.id == v.id)" src="../../../assets/Icon_eliminar1.svg" alt="Eliminar" (click)="delete(v.id)">
+                                    <img *ngIf="isEditing && !(selectedVehicle && selectedVehicle.id == v.id)" src="../../../assets/Icon_eliminar.svg" alt="Eliminar" >
+                                </a>
                             </td>
                         </tr>
                     </tbody>

@@ -1,0 +1,73 @@
+
+.hero-banner {
+  position: relative;
+  cursor: pointer;
+  height: 50vh;
+  width: 100%;
+}
+.hero-banner p {
+  position: absolute;
+  color: #0a2d9f;
+  cursor: pointer;
+  z-index: 100;
+}
+.hero-banner p:first-child {
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+.hero-banner p:last-child {
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  -webkit-text-stroke: 1px #FFF;
+  z-index: 200;
+}
+.hero-banner figure {
+  height: 50vh;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 150;
+}
+.hero-banner figure img {
+  height: 100%;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero .effect {
+  position: absolute;
+  top: -50vh;
+  right: 10vw;
+  z-index: 1;
+  animation: 10s linear infinite 0s bounce;
+  height: 200vh;
+  box-shadow: -10px 0px 5px rgba(177, 177, 177, 0.3137254902);
+  width: 100vw;
+  border-radius: 50%;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0vw);
+    display: none;
+  }
+}
+.hero-link {
+  color: #40cee4;
+}
