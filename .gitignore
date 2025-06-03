@@ -2,3 +2,5 @@ venv/
 backend/vehicle/__pycache__/
 backend/api/__pycache__/
 backend/vehicle/migrations/__pycache__/
+styles/node_modules/
+styles/css/
