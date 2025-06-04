@@ -33,12 +33,12 @@
                         Aspirante es obligatorio.
                     </small>     -->
 
-                    <div *ngIf="isCreating" class="buttons">
+                    <div *ngIf="isCreating" class="buttons" data-aos="fade-right">
                         <button class="btn-cancel" (click)="cancel()">Cancelar</button>
                         <button class="btn-create" (click)="create()">Crear</button>
                     </div>
 
-                    <div *ngIf="isEditing" class="icons">
+                    <div *ngIf="isEditing" class="icons" data-aos="fade-right">
                         <a><img src="../../../assets/Icon_cancelar.svg" alt="Cancelar" (click)="cancel()"></a>
                         <a><img src="../../../assets/Icon_confirmar.svg" alt="Confirmar" (click)="update()"></a>
                     </div>
