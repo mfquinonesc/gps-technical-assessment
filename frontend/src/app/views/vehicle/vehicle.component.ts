@@ -43,9 +43,12 @@ export class VehicleComponent {
 
   addNew() {
     this.isCreating = true;
+    this.isEditing = false;
+    this.vehicleForm.reset();
   }
 
   edit(id: number) {
+    this.isCreating = false;    
     this.selectedVehicle = this.vehicles.find((v) => {
       return v.id == id;
     });
