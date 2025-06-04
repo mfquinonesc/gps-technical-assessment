@@ -2,48 +2,42 @@
     <div class="hero-body is-flex is-flex-direction-column is-justify-content-top">
         <div class="container columns">
             <div class="column is-4">
-                <form [formGroup]="vehicleForm" class="box px-5 form-box">
+                
+                <fieldset [disabled]="!isCreating && !isEditing">
+                    <form [formGroup]="vehicleForm" class="box px-5 form-box">
 
-                    <a class="btn-add" (click)="addNew()"> <img src="../../../assets/Icon_crear.svg" alt="Crear"> </a>
+                        <a class="btn-add" (click)="addNew()"> <img src="../../../assets/Icon_crear.svg" alt="Crear"> </a>
 
-                    <div>
-                        <img *ngIf="isCreating" src="../../../assets/Icon_vehiculo1.svg" alt="Marca">
-                        <img *ngIf="!isCreating" src="../../../assets/Icon_vehiculo.svg" alt="Marca">
-                        <input type="text" formControlName="brand" placeholder="Marca">
-                    </div>
-                    <!-- <small *ngIf="brand.invalid && brand.touched">
-                        Marca es obligatoria.
-                    </small> -->
+                        <div>
+                            <img *ngIf="isCreating" src="../../../assets/Icon_vehiculo1.svg" alt="Marca">
+                            <img *ngIf="!isCreating" src="../../../assets/Icon_vehiculo.svg" alt="Marca">
+                            <input type="text" formControlName="brand" placeholder="Marca">
+                        </div>
+                    
+                        <div>
+                            <img *ngIf="isCreating" src="../../../assets/Icon_puntoubicacion1.svg" alt="Sucursal">
+                            <img *ngIf="!isCreating" src="../../../assets/Icon_puntoubicacion.svg" alt="Sucursal">
+                            <input type="text" formControlName="company_brand" placeholder="Sucursal">
+                        </div>
+                        
+                        <div>
+                            <img *ngIf="isCreating" src="../../../assets/Icon_persona1.svg" alt="Aspirante">
+                            <img *ngIf="!isCreating" src="../../../assets/Icon_persona.svg" alt="Aspirante">
+                            <input type="text" formControlName="applicant" placeholder="Aspirante">
+                        </div>                   
 
-                    <div>
-                        <img *ngIf="isCreating" src="../../../assets/Icon_puntoubicacion1.svg" alt="Sucursal">
-                        <img *ngIf="!isCreating" src="../../../assets/Icon_puntoubicacion.svg" alt="Sucursal">
-                        <input type="text" formControlName="company_brand" placeholder="Sucursal">
-                    </div>
-                    <!-- <small *ngIf="company_brand.invalid && company_brand.touched">
-                        Sucursal es obligatoria.
-                    </small> -->
+                        <div *ngIf="isCreating" class="buttons" data-aos="fade-right">
+                            <button class="btn-cancel" (click)="cancel()">Cancelar</button>
+                            <button class="btn-create" (click)="create()">Crear</button>
+                        </div>
 
-                    <div>
-                        <img *ngIf="isCreating" src="../../../assets/Icon_persona1.svg" alt="Aspirante">
-                        <img *ngIf="!isCreating" src="../../../assets/Icon_persona.svg" alt="Aspirante">
-                        <input type="text" formControlName="applicant" placeholder="Aspirante">
-                    </div>
-                    <!-- <small *ngIf="applicant.invalid && applicant.touched">
-                        Aspirante es obligatorio.
-                    </small>     -->
+                        <div *ngIf="isEditing" class="icons" data-aos="fade-right">
+                            <a><img src="../../../assets/Icon_cancelar.svg" alt="Cancelar" (click)="cancel()"></a>
+                            <a><img src="../../../assets/Icon_confirmar.svg" alt="Confirmar" (click)="update()"></a>
+                        </div>
 
-                    <div *ngIf="isCreating" class="buttons" data-aos="fade-right">
-                        <button class="btn-cancel" (click)="cancel()">Cancelar</button>
-                        <button class="btn-create" (click)="create()">Crear</button>
-                    </div>
-
-                    <div *ngIf="isEditing" class="icons" data-aos="fade-right">
-                        <a><img src="../../../assets/Icon_cancelar.svg" alt="Cancelar" (click)="cancel()"></a>
-                        <a><img src="../../../assets/Icon_confirmar.svg" alt="Confirmar" (click)="update()"></a>
-                    </div>
-
-                </form>
+                    </form>
+                </fieldset>
             </div>
             <div class="column is-8">
                 <table class="table-vehicle">
