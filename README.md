@@ -20,6 +20,6 @@ Django. Create a virtual environment in python ```python -m venv venv``` and act
 
 ## Deployment
 
-- [Project deployed](https://sage-smakager-fb0575.netlify.app/)
+- [Project deployed](https://gps-technical-assessment.netlify.app/)
 - Frontend Netlify
 - Backend Render 
